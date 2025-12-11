@@ -68,11 +68,26 @@ include CMakeFiles/7WondersDuel.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/7WondersDuel.dir/flags.make
 
+CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.obj: CMakeFiles/7WondersDuel.dir/flags.make
+CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.obj: CMakeFiles/7WondersDuel.dir/includes_CXX.rsp
+CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.obj: D:/7wonders_clone/src/cards/member2.cpp
+CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.obj: CMakeFiles/7WondersDuel.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\7wonders_clone\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.obj"
+	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.obj -MF CMakeFiles\7WondersDuel.dir\src\cards\member2.cpp.obj.d -o CMakeFiles\7WondersDuel.dir\src\cards\member2.cpp.obj -c D:\7wonders_clone\src\cards\member2.cpp
+
+CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.i"
+	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\7wonders_clone\src\cards\member2.cpp > CMakeFiles\7WondersDuel.dir\src\cards\member2.cpp.i
+
+CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.s"
+	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\7wonders_clone\src\cards\member2.cpp -o CMakeFiles\7WondersDuel.dir\src\cards\member2.cpp.s
+
 CMakeFiles/7WondersDuel.dir/src/core/Board.cpp.obj: CMakeFiles/7WondersDuel.dir/flags.make
 CMakeFiles/7WondersDuel.dir/src/core/Board.cpp.obj: CMakeFiles/7WondersDuel.dir/includes_CXX.rsp
 CMakeFiles/7WondersDuel.dir/src/core/Board.cpp.obj: D:/7wonders_clone/src/core/Board.cpp
 CMakeFiles/7WondersDuel.dir/src/core/Board.cpp.obj: CMakeFiles/7WondersDuel.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\7wonders_clone\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/7WondersDuel.dir/src/core/Board.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\7wonders_clone\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/7WondersDuel.dir/src/core/Board.cpp.obj"
 	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/7WondersDuel.dir/src/core/Board.cpp.obj -MF CMakeFiles\7WondersDuel.dir\src\core\Board.cpp.obj.d -o CMakeFiles\7WondersDuel.dir\src\core\Board.cpp.obj -c D:\7wonders_clone\src\core\Board.cpp
 
 CMakeFiles/7WondersDuel.dir/src/core/Board.cpp.i: cmake_force
@@ -87,7 +102,7 @@ CMakeFiles/7WondersDuel.dir/src/core/Game.cpp.obj: CMakeFiles/7WondersDuel.dir/f
 CMakeFiles/7WondersDuel.dir/src/core/Game.cpp.obj: CMakeFiles/7WondersDuel.dir/includes_CXX.rsp
 CMakeFiles/7WondersDuel.dir/src/core/Game.cpp.obj: D:/7wonders_clone/src/core/Game.cpp
 CMakeFiles/7WondersDuel.dir/src/core/Game.cpp.obj: CMakeFiles/7WondersDuel.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\7wonders_clone\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/7WondersDuel.dir/src/core/Game.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\7wonders_clone\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/7WondersDuel.dir/src/core/Game.cpp.obj"
 	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/7WondersDuel.dir/src/core/Game.cpp.obj -MF CMakeFiles\7WondersDuel.dir\src\core\Game.cpp.obj.d -o CMakeFiles\7WondersDuel.dir\src\core\Game.cpp.obj -c D:\7wonders_clone\src\core\Game.cpp
 
 CMakeFiles/7WondersDuel.dir/src/core/Game.cpp.i: cmake_force
@@ -102,7 +117,7 @@ CMakeFiles/7WondersDuel.dir/src/main.cpp.obj: CMakeFiles/7WondersDuel.dir/flags.
 CMakeFiles/7WondersDuel.dir/src/main.cpp.obj: CMakeFiles/7WondersDuel.dir/includes_CXX.rsp
 CMakeFiles/7WondersDuel.dir/src/main.cpp.obj: D:/7wonders_clone/src/main.cpp
 CMakeFiles/7WondersDuel.dir/src/main.cpp.obj: CMakeFiles/7WondersDuel.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\7wonders_clone\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/7WondersDuel.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\7wonders_clone\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/7WondersDuel.dir/src/main.cpp.obj"
 	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/7WondersDuel.dir/src/main.cpp.obj -MF CMakeFiles\7WondersDuel.dir\src\main.cpp.obj.d -o CMakeFiles\7WondersDuel.dir\src\main.cpp.obj -c D:\7wonders_clone\src\main.cpp
 
 CMakeFiles/7WondersDuel.dir/src/main.cpp.i: cmake_force
@@ -113,23 +128,76 @@ CMakeFiles/7WondersDuel.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/7WondersDuel.dir/src/main.cpp.s"
 	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\7wonders_clone\src\main.cpp -o CMakeFiles\7WondersDuel.dir\src\main.cpp.s
 
+CMakeFiles/7WondersDuel.dir/src/player/game.cpp.obj: CMakeFiles/7WondersDuel.dir/flags.make
+CMakeFiles/7WondersDuel.dir/src/player/game.cpp.obj: CMakeFiles/7WondersDuel.dir/includes_CXX.rsp
+CMakeFiles/7WondersDuel.dir/src/player/game.cpp.obj: D:/7wonders_clone/src/player/game.cpp
+CMakeFiles/7WondersDuel.dir/src/player/game.cpp.obj: CMakeFiles/7WondersDuel.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\7wonders_clone\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/7WondersDuel.dir/src/player/game.cpp.obj"
+	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/7WondersDuel.dir/src/player/game.cpp.obj -MF CMakeFiles\7WondersDuel.dir\src\player\game.cpp.obj.d -o CMakeFiles\7WondersDuel.dir\src\player\game.cpp.obj -c D:\7wonders_clone\src\player\game.cpp
+
+CMakeFiles/7WondersDuel.dir/src/player/game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/7WondersDuel.dir/src/player/game.cpp.i"
+	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\7wonders_clone\src\player\game.cpp > CMakeFiles\7WondersDuel.dir\src\player\game.cpp.i
+
+CMakeFiles/7WondersDuel.dir/src/player/game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/7WondersDuel.dir/src/player/game.cpp.s"
+	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\7wonders_clone\src\player\game.cpp -o CMakeFiles\7WondersDuel.dir\src\player\game.cpp.s
+
+CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.obj: CMakeFiles/7WondersDuel.dir/flags.make
+CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.obj: CMakeFiles/7WondersDuel.dir/includes_CXX.rsp
+CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.obj: D:/7wonders_clone/src/view/ctrlView.cpp
+CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.obj: CMakeFiles/7WondersDuel.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\7wonders_clone\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.obj"
+	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.obj -MF CMakeFiles\7WondersDuel.dir\src\view\ctrlView.cpp.obj.d -o CMakeFiles\7WondersDuel.dir\src\view\ctrlView.cpp.obj -c D:\7wonders_clone\src\view\ctrlView.cpp
+
+CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.i"
+	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\7wonders_clone\src\view\ctrlView.cpp > CMakeFiles\7WondersDuel.dir\src\view\ctrlView.cpp.i
+
+CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.s"
+	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\7wonders_clone\src\view\ctrlView.cpp -o CMakeFiles\7WondersDuel.dir\src\view\ctrlView.cpp.s
+
+CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.obj: CMakeFiles/7WondersDuel.dir/flags.make
+CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.obj: CMakeFiles/7WondersDuel.dir/includes_CXX.rsp
+CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.obj: D:/7wonders_clone/src/view/ctrller.cpp
+CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.obj: CMakeFiles/7WondersDuel.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\7wonders_clone\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.obj"
+	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.obj -MF CMakeFiles\7WondersDuel.dir\src\view\ctrller.cpp.obj.d -o CMakeFiles\7WondersDuel.dir\src\view\ctrller.cpp.obj -c D:\7wonders_clone\src\view\ctrller.cpp
+
+CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.i"
+	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\7wonders_clone\src\view\ctrller.cpp > CMakeFiles\7WondersDuel.dir\src\view\ctrller.cpp.i
+
+CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.s"
+	D:\mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\7wonders_clone\src\view\ctrller.cpp -o CMakeFiles\7WondersDuel.dir\src\view\ctrller.cpp.s
+
 # Object files for target 7WondersDuel
 7WondersDuel_OBJECTS = \
+"CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.obj" \
 "CMakeFiles/7WondersDuel.dir/src/core/Board.cpp.obj" \
 "CMakeFiles/7WondersDuel.dir/src/core/Game.cpp.obj" \
-"CMakeFiles/7WondersDuel.dir/src/main.cpp.obj"
+"CMakeFiles/7WondersDuel.dir/src/main.cpp.obj" \
+"CMakeFiles/7WondersDuel.dir/src/player/game.cpp.obj" \
+"CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.obj" \
+"CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.obj"
 
 # External object files for target 7WondersDuel
 7WondersDuel_EXTERNAL_OBJECTS =
 
+7WondersDuel.exe: CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.obj
 7WondersDuel.exe: CMakeFiles/7WondersDuel.dir/src/core/Board.cpp.obj
 7WondersDuel.exe: CMakeFiles/7WondersDuel.dir/src/core/Game.cpp.obj
 7WondersDuel.exe: CMakeFiles/7WondersDuel.dir/src/main.cpp.obj
+7WondersDuel.exe: CMakeFiles/7WondersDuel.dir/src/player/game.cpp.obj
+7WondersDuel.exe: CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.obj
+7WondersDuel.exe: CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.obj
 7WondersDuel.exe: CMakeFiles/7WondersDuel.dir/build.make
 7WondersDuel.exe: CMakeFiles/7WondersDuel.dir/linkLibs.rsp
 7WondersDuel.exe: CMakeFiles/7WondersDuel.dir/objects1.rsp
 7WondersDuel.exe: CMakeFiles/7WondersDuel.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\7wonders_clone\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable 7WondersDuel.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\7wonders_clone\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable 7WondersDuel.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\7WondersDuel.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -128,6 +128,30 @@ depend:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/build
 .PHONY : 7WondersDuel/fast
 
+src/cards/member2.obj: src/cards/member2.cpp.obj
+.PHONY : src/cards/member2.obj
+
+# target to build an object file
+src/cards/member2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.obj
+.PHONY : src/cards/member2.cpp.obj
+
+src/cards/member2.i: src/cards/member2.cpp.i
+.PHONY : src/cards/member2.i
+
+# target to preprocess a source file
+src/cards/member2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.i
+.PHONY : src/cards/member2.cpp.i
+
+src/cards/member2.s: src/cards/member2.cpp.s
+.PHONY : src/cards/member2.s
+
+# target to generate assembly for a file
+src/cards/member2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.s
+.PHONY : src/cards/member2.cpp.s
+
 src/core/Board.obj: src/core/Board.cpp.obj
 .PHONY : src/core/Board.obj
 
@@ -200,6 +224,78 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/player/game.obj: src/player/game.cpp.obj
+.PHONY : src/player/game.obj
+
+# target to build an object file
+src/player/game.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/player/game.cpp.obj
+.PHONY : src/player/game.cpp.obj
+
+src/player/game.i: src/player/game.cpp.i
+.PHONY : src/player/game.i
+
+# target to preprocess a source file
+src/player/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/player/game.cpp.i
+.PHONY : src/player/game.cpp.i
+
+src/player/game.s: src/player/game.cpp.s
+.PHONY : src/player/game.s
+
+# target to generate assembly for a file
+src/player/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/player/game.cpp.s
+.PHONY : src/player/game.cpp.s
+
+src/view/ctrlView.obj: src/view/ctrlView.cpp.obj
+.PHONY : src/view/ctrlView.obj
+
+# target to build an object file
+src/view/ctrlView.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.obj
+.PHONY : src/view/ctrlView.cpp.obj
+
+src/view/ctrlView.i: src/view/ctrlView.cpp.i
+.PHONY : src/view/ctrlView.i
+
+# target to preprocess a source file
+src/view/ctrlView.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.i
+.PHONY : src/view/ctrlView.cpp.i
+
+src/view/ctrlView.s: src/view/ctrlView.cpp.s
+.PHONY : src/view/ctrlView.s
+
+# target to generate assembly for a file
+src/view/ctrlView.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.s
+.PHONY : src/view/ctrlView.cpp.s
+
+src/view/ctrller.obj: src/view/ctrller.cpp.obj
+.PHONY : src/view/ctrller.obj
+
+# target to build an object file
+src/view/ctrller.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.obj
+.PHONY : src/view/ctrller.cpp.obj
+
+src/view/ctrller.i: src/view/ctrller.cpp.i
+.PHONY : src/view/ctrller.i
+
+# target to preprocess a source file
+src/view/ctrller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.i
+.PHONY : src/view/ctrller.cpp.i
+
+src/view/ctrller.s: src/view/ctrller.cpp.s
+.PHONY : src/view/ctrller.s
+
+# target to generate assembly for a file
+src/view/ctrller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\7WondersDuel.dir\build.make CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.s
+.PHONY : src/view/ctrller.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -209,6 +305,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... 7WondersDuel
+	@echo ... src/cards/member2.obj
+	@echo ... src/cards/member2.i
+	@echo ... src/cards/member2.s
 	@echo ... src/core/Board.obj
 	@echo ... src/core/Board.i
 	@echo ... src/core/Board.s
@@ -218,6 +317,15 @@ help:
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/player/game.obj
+	@echo ... src/player/game.i
+	@echo ... src/player/game.s
+	@echo ... src/view/ctrlView.obj
+	@echo ... src/view/ctrlView.i
+	@echo ... src/view/ctrlView.s
+	@echo ... src/view/ctrller.obj
+	@echo ... src/view/ctrller.i
+	@echo ... src/view/ctrller.s
 .PHONY : help
 
 

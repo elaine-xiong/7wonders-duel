@@ -1,6 +1,12 @@
 [
 {
   "directory": "D:/7wonders_clone/build",
+  "command": "D:\\mingw\\mingw64\\bin\\g++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/7WondersDuel.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\7WondersDuel.dir\\src\\cards\\member2.cpp.obj -c D:\\7wonders_clone\\src\\cards\\member2.cpp",
+  "file": "D:/7wonders_clone/src/cards/member2.cpp",
+  "output": "CMakeFiles/7WondersDuel.dir/src/cards/member2.cpp.obj"
+},
+{
+  "directory": "D:/7wonders_clone/build",
   "command": "D:\\mingw\\mingw64\\bin\\g++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/7WondersDuel.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\7WondersDuel.dir\\src\\core\\Board.cpp.obj -c D:\\7wonders_clone\\src\\core\\Board.cpp",
   "file": "D:/7wonders_clone/src/core/Board.cpp",
   "output": "CMakeFiles/7WondersDuel.dir/src/core/Board.cpp.obj"
@@ -16,5 +22,23 @@
   "command": "D:\\mingw\\mingw64\\bin\\g++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/7WondersDuel.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\7WondersDuel.dir\\src\\main.cpp.obj -c D:\\7wonders_clone\\src\\main.cpp",
   "file": "D:/7wonders_clone/src/main.cpp",
   "output": "CMakeFiles/7WondersDuel.dir/src/main.cpp.obj"
+},
+{
+  "directory": "D:/7wonders_clone/build",
+  "command": "D:\\mingw\\mingw64\\bin\\g++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/7WondersDuel.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\7WondersDuel.dir\\src\\player\\game.cpp.obj -c D:\\7wonders_clone\\src\\player\\game.cpp",
+  "file": "D:/7wonders_clone/src/player/game.cpp",
+  "output": "CMakeFiles/7WondersDuel.dir/src/player/game.cpp.obj"
+},
+{
+  "directory": "D:/7wonders_clone/build",
+  "command": "D:\\mingw\\mingw64\\bin\\g++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/7WondersDuel.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\7WondersDuel.dir\\src\\view\\ctrlView.cpp.obj -c D:\\7wonders_clone\\src\\view\\ctrlView.cpp",
+  "file": "D:/7wonders_clone/src/view/ctrlView.cpp",
+  "output": "CMakeFiles/7WondersDuel.dir/src/view/ctrlView.cpp.obj"
+},
+{
+  "directory": "D:/7wonders_clone/build",
+  "command": "D:\\mingw\\mingw64\\bin\\g++.exe -D_WIN32_WINNT=0x0600 @CMakeFiles/7WondersDuel.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\7WondersDuel.dir\\src\\view\\ctrller.cpp.obj -c D:\\7wonders_clone\\src\\view\\ctrller.cpp",
+  "file": "D:/7wonders_clone/src/view/ctrller.cpp",
+  "output": "CMakeFiles/7WondersDuel.dir/src/view/ctrller.cpp.obj"
 }
 ]

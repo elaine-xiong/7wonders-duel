@@ -2,6 +2,7 @@
 #include <map>
 #include <vector>
 #include <functional>  // 用于Lambda表达式形式的效果实现
+#include "player/game.h"
 
 // 卡牌颜色枚举
 enum class Color { BROWN, GREY, BLUE, YELLOW, RED, GREEN, PURPLE };
