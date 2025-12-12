@@ -9,6 +9,7 @@ class Player {
 private:
     std::map<std::string, int> resources;  // 资源字典
     int coins;  // 钱数，或者某种代币
+    std::set<std::string> owned_cards;  // 新增：存储玩家拥有的卡牌名称
 public:
     // 构造函数初始化玩家资源
     Player() {
@@ -39,6 +40,16 @@ public:
         addResource("wood", 1);  
         // 可根据实际规则进一步修改
     }
+
+    // 新增：检查玩家是否拥有指定卡牌
+    bool has_card(const std::string& card_name) const {
+    return owned_cards.find(card_name) != owned_cards.end();
+}
+    // 新增：添加卡牌到玩家收藏
+    void add_card(const std::string& card_name) {
+    owned_cards.insert(card_name);
+}
+
 };
 
 class Cost {
