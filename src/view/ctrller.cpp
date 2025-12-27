@@ -1,7 +1,5 @@
-#include "Controller.h"
+#include "ctrller.h"
 #include "ConsoleView.h"  // 包含 ConsoleView 的定义
-#include "Game.h"         // 包含 Game 的定义
-#include "Player.h"       // 包含 Player 的定义
 
 Controller::Controller(Game& g) : game(g) {}
 

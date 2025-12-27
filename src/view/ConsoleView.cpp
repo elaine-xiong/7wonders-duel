@@ -1,6 +1,4 @@
 #include "ConsoleView.h"
-#include "CardStructure.h"  // 包含 CardStructure 的定义
-#include "Card.h"           // 包含 Card 的定义
 
 // 展示卡牌金字塔结构
 void ConsoleView::display_structure(const CardStructure& structure, const std::vector<int>& accessible) {

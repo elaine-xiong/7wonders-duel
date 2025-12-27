@@ -1,6 +1,6 @@
-#ifndef CONTROLLER_H
-#define CONTROLLER_H
-
+#pragma once
+#include "../core/Game.h"         // 包含 Game 的定义
+#include "../player/Player.h"       // 包含 Player 的定义
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -19,5 +19,3 @@ public:
     // 玩家回合处理
     void player_turn(Player& player);
 };
-
-#endif // CONTROLLER_H

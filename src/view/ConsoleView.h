@@ -1,6 +1,6 @@
-#ifndef CONSOLE_VIEW_H
-#define CONSOLE_VIEW_H
-
+#pragma once
+#include "../cards/CardStructure.h"
+#include "../cards/Card.h"           // 包含 Card 的定义
 #include <iostream>
 #include <vector>
 #include <string>
@@ -18,5 +18,3 @@ private:
     // 格式化卡牌显示（背面朝上显示"???"，可获取卡牌前缀加"*"）
     std::string format_card(int pos, const CardStructure& s, const std::vector<int>& acc);
 };
-
-#endif // CONSOLE_VIEW_H

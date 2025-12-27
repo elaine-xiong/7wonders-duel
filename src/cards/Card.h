@@ -1,6 +1,4 @@
-#ifndef CARD_H
-#define CARD_H
-
+#pragma once
 #include <string>
 #include <map>
 #include <vector>
@@ -21,6 +19,7 @@ public:
     std::map<Resource, int> cost;
     std::vector<std::string> chain_prerequisites;  // 前提卡牌名称
     std::string chain_provides;  // 提供的链式符号（例如 "COMPASS"）
+    bool is_face_up = true; //添加:卡牌是否正面朝上，默认正面
     std::function<void(Player& self, Game& game)> effect;  // 效果 lambda（简化，多玩家版本忽略对手）
 
     Card(std::string n, int a, Color c, std::map<Resource, int> co, std::vector<std::string> pre, std::string pro);
@@ -29,5 +28,3 @@ public:
 
 // 工厂函数声明
 std::vector<std::unique_ptr<Card>> createAllCards();
-
-#endif // CARD_H

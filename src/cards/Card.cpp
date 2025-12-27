@@ -1,6 +1,6 @@
 #include "Card.h"
-#include "Player.h"  // 假设包含 add_resource, add_victory_points, add_shield, add_science_symbol, has_card, count_neighbor_brown 等
-#include "Game.h"    // 假设包含 check_science_victory 等
+#include "../player/Player.h"  // 假设包含 add_resource, add_victory_points, add_shield, add_science_symbol, has_card, count_neighbor_brown 等
+#include "../core/Game.h"    // 假设包含 check_science_victory 等
 
 Card::Card(std::string n, int a, Color c, std::map<Resource, int> co, std::vector<std::string> pre, std::string pro)
     : name(n), age(a), color(c), cost(co), chain_prerequisites(pre), chain_provides(pro) {}

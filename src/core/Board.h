@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <iostream>
+//定义冲突与惩罚
 
 class Board {
 private:
@@ -9,8 +10,8 @@ private:
     // 规则参考: 
     int conflictPawnPosition; 
     
-    // 军事标记（当棋子跨过某些区域时触发弃币）。
-    // 这里简单用 bool 表示是否还在。规则参考: 
+    // 军事标记：[0,1]对应P1侧，[2,3]对应P2侧
+    // 索引0: 2元(pos 6), 索引1: 5元(pos 3) | 索引2: 2元(pos 12), 索引3: 5元(pos 15)
     bool militaryTokens[4]; 
 
     // 场上的科技标记（Progress Tokens）。规则参考: 
@@ -23,7 +24,7 @@ public:
     // 移动棋子。amount > 0 向右(P2)移动，amount < 0 向左(P1)移动
     // 返回 true 如果导致某方立即获胜（到达首都）
     // 规则参考: 
-    bool movePawn(int amount);
+    bool movePawn(int amount, Player& p1, Player& p2);
     
     int getPawnPosition() const;
     

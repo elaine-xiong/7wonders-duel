@@ -5,6 +5,7 @@
 #include <functional>
 #include "../player/Player.h"
 
+class Game;
 class Wonder {
 public:
     std::string name;

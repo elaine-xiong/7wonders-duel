@@ -1,69 +1,67 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include "Board.h"
-#include "../player/game.h"
-#include "../cards/member2.h"
+#include <string>
 
-// class Player;
-// class CardStructure;
+// 前向声明，减少头文件相互包含导致的编译错误
+class Board;
+class Player;
+class CardStructure;
+class Controller;
+class Card;
 
 class Game {
 private:
-    static Game* instance; // 单例实例
+    // 1. 单例模式私有成员
+    static Game* instance;
+    Game(); // 私有构造函数
 
-    // 核心成员
+    // 2. 核心组件
     std::unique_ptr<Board> board;
-    std::vector<std::shared_ptr<Player>> players; // 2名玩家
+    std::vector<std::shared_ptr<Player>> players;
+    std::unique_ptr<CardStructure> cardStructure;
     
-    // 游戏状态
-    int currentAge;       // 当前时代 (1, 2, 3) 
-    int currentPlayerIdx; // 当前回合玩家索引 (0 或 1)
+    // 3. 游戏状态变量
+    int currentAge;
+    int currentPlayerIdx;
     bool isGameOver;
-
-    // 私有构造函数 (单例模式)
-    Game(); 
+    bool extraTurnTriggered; // 用于某些奇迹提供的“连续行动”效果
 
 public:
-    // 获取单例
+    // 4. 单例获取接口
     static Game& getInstance();
-    // 禁止拷贝
+    
+    // 5. 禁止拷贝和赋值（单例模式标准操作）
     Game(const Game&) = delete;
     void operator=(const Game&) = delete;
-    std::unique_ptr<CardStructure> cardStructure;
 
-    // 初始化游戏
-    // 规则参考: 
-    void init();
+    // 6. 生命周期管理
+    void init(); // 初始化玩家、金币、初始时代布局
+    void run();  // 游戏主循环
+    void endAge(); // 时代切换逻辑（如Age 1结束进入Age 2）
 
-    // 开始游戏主循环
-    void run();
-
-    // 处理回合逻辑
-    // 规则参考: 
+    // 7. 回合逻辑处理
     void playTurn(Controller& controller);
 
-    // 检查是否有玩家达成 科技或军事 胜利
-    // 规则参考: 
-    bool checkSupremacyVictory();
+    // 8. 核心游戏动作（供 Controller 调用）
+    // 返回 bool 可以让 Controller 知道操作是否成功执行
+    bool takeCard(int pos, Player& player);
+    void buildWonder(int wonderIdx, int pos, Player& player);
+    void discardForCoins(int pos, Player& player);
 
-    // 时代结束处理
-    // 规则参考: 
-    void endAge();
-    
-    // 辅助方法
+    // 9. 胜利条件检查
+    bool checkSupremacyVictory(); // 检查军事压制或科技压制
+
+    // 10. 辅助工具接口（Getter/Setter）
     Board* getBoard() { return board.get(); }
     Player* getCurrentPlayer();
     Player* getOpponent();
-
-    // 供 Controller 使用：获取当前时代卡牌结构
-    CardStructure& getCardStructure() { return *cardStructure; } 
-
-    // 供 Card Effect 使用：
+    CardStructure& getStructure() { return *cardStructure; } 
+    
+    int getCurrentAge() const { return currentAge; }
     void setIsGameOver(bool status) { isGameOver = status; }
+    void setExtraTurn(bool status) { extraTurnTriggered = status; }
 
-    // 供 Controller 使用：三个核心动作
-    void takeCard(int pos, Player& player);
-    void buildWonder(int wonderIdx, int pos, Player& player);
-    void discardForCoins(int pos, Player& player);
+    // 析构函数（单例清理）
+    ~Game() = default;
 };
