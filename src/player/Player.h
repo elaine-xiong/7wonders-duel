@@ -249,6 +249,30 @@ public:
      * @return 最终得分
      */
     int calculateFinalScore() const;
+
+
+    
+    // --- 新增：获取唯一科技符号数量 ---
+    int getUniqueScienceCount() const { 
+        return scienceSymbols.size(); 
+    }
+
+    // --- 新增：统计黄色卡牌数量（用于弃牌金币计算） ---
+    int countYellowCards() const {
+        return getCardCountByColor(Color::YELLOW);
+    }
+    
+    // --- 新增：强制扣钱（用于奇迹效果或军事惩罚） ---
+    void loseCoins(int amount) {
+        coins = (coins > amount) ? (coins - amount) : 0;
+    }
+
+    // --- 新增：处理二选一资源（如：林场产出的 木头/石头） ---
+    // 这通常需要一个专门的结构来存储，或者简化为注册两种产出
+    void addWildcardResource(const std::vector<Resource>& options) {
+        // 简单实现：将可选资源都加入产出列表，或者记录到专门的 wildcard 集合中
+        for(auto r : options) addResourceProducingCard(r);
+    }
 };
 
 #endif // PLAYER_H

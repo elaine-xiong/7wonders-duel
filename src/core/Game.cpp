@@ -47,37 +47,63 @@ void Game::init() {
 // 核心动作 1：购买/建造卡牌
 bool Game::takeCard(int pos, Player& player) {
     try {
-            // 1. 取牌
+        // 1. 从卡牌结构中尝试取牌（处理 pos 校验逻辑由 cardStructure 内部负责）
         std::unique_ptr<Card> card = cardStructure->takeCard(pos);
+        if (!card) return false;
 
-        // 2. 检查建造资格 (改用 Member 3 的逻辑)
-        bool isFree = player.canBuildFreeByChain(card->chainPrerequisites);
+        // 2. 检查建造资格与成本支付
+        // 优先检查是否有“连锁建筑”提供的免费建造机会
+        bool isFree = player.canBuildFreeByChain(card->chain_prerequisites);
+        
         if (!isFree) {
-            // 调用 Member 3 正确的函数名
+            // 调用 Member 3 的成本计算器
+            // 注意：此处 result.totalCoinCost 已包含资源购买费和卡牌基础费
             auto result = CostCalculator::calculateBuildCost(player, *getOpponent(), card->cost);
-            if (!result.canBuild) return false;
+            
+            if (!result.canBuild) {
+                // 如果钱不够，将卡牌还回结构（或报错），此处视底层实现而定
+                std::cout << "Cannot afford card: " << card->name << std::endl;
+                return false; 
+            }
             
             player.spendCoins(result.totalCoinCost);
         }
 
-        // 3. 记录卡牌颜色和产出
+        // 3. 应用卡牌即时效果 (核心逻辑！)
+        // 这里的 Lambda 会调用 player.addCoins, game.movePawn 等
+        if (card->effect) {
+            card->effect(player, *this);
+        }
+
+        // 4. 记录卡牌到玩家名下并登记产出
         player.addBuiltCard(card->name, card->color);
-        // 如果是资源卡，要注册产出 (重要！)
+        
+        // 规则：棕卡和灰卡提供永久资源产出，用于后续买牌的成本抵扣
         if (card->color == Color::BROWN || card->color == Color::GREY) {
+            // 假设 Member 2 的 Card 类有一个成员 std::vector<Resource> producedResources
             for (auto res : card->producedResources) {
                 player.addResourceProducingCard(res);
             }
         }
-        // 5. 切换回合
+
+        // 5. 检查是否因为此牌的效果（如军事或科技）导致游戏立即结束
+        if (checkSupremacyVictory()) {
+            isGameOver = true;
+            return true;
+        }
+
+        // 6. 切换回合逻辑
         if (!extraTurnTriggered) {
             currentPlayerIdx = (currentPlayerIdx + 1) % 2;
         } else {
-            std::cout << "Extra turn! " << player.getName() << " moves again." << std::endl;
-            extraTurnTriggered = false; // 重置标记
+            std::cout << "[Game] Extra turn triggered for " << player.getName() << "!" << std::endl;
+            extraTurnTriggered = false; // 使用后重置
         }
+
         return true;
+
     } catch (const std::exception& e) {
-        std::cout << "Action Error: " << e.what() << std::endl;
+        std::cerr << "[Game Error] Action failed at pos " << pos << ": " << e.what() << std::endl;
         return false;
     }
 }
@@ -169,4 +195,25 @@ Player* Game::getCurrentPlayer() {
 
 Player* Game::getOpponent() {
     return players[(currentPlayerIdx + 1) % 2].get();
+}
+
+void Game::movePawn(int steps) {
+    if (!board) return;
+
+    // 逻辑：
+    // 如果当前玩家是 P1 (Idx 0)，军事推进意味着向 P2 的首都移动 (amount > 0)
+    // 如果当前玩家是 P2 (Idx 1)，军事推进意味着向 P1 的首都移动 (amount < 0)
+    int actualAmount = (currentPlayerIdx == 0) ? steps : -steps;
+
+    // 获取玩家引用
+    Player& p1 = *players[0];
+    Player& p2 = *players[1];
+
+    // 调用 Board 执行移动
+    bool isVictory = board->movePawn(actualAmount, p1, p2);
+
+    if (isVictory) {
+        isGameOver = true;
+        std::cout << "--- MILITARY SUPREMACY! Game Over ---" << std::endl;
+    }
 }

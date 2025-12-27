@@ -62,6 +62,8 @@ public:
     void setIsGameOver(bool status) { isGameOver = status; }
     void setExtraTurn(bool status) { extraTurnTriggered = status; }
 
+    void movePawn(int steps); // 执行军事推进，steps 永远为正，方向由函数内部根据当前玩家判断
+
     // 析构函数（单例清理）
     ~Game() = default;
 };
