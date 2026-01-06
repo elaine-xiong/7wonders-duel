@@ -4,6 +4,15 @@
 #include <vector>
 #include <string>
 
+
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <unistd.h>
+#endif
+
+void clearScreen();
+
 // 前向声明，减少物理依赖并加快编译速度
 class CardStructure;
 class Card;

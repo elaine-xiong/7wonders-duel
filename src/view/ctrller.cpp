@@ -6,11 +6,14 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+#include <thread> 
+#include <chrono>
 
 Controller::Controller(Game& game) : game(game), view(std::make_unique<ConsoleView>()) {}
 Controller::~Controller() = default;
 void Controller::player_turn(Player& player) {
     bool turn_finished = false;
+
     
     // 1. 每一回合开始前，显示当前的全局战况
     view->display_board(game);
@@ -36,7 +39,9 @@ void Controller::player_turn(Player& player) {
         }
 
         // 验证卡牌是否可取
-        const Card* selected_card = game.get_structure().get_card(card_pos);
+        // const Card* selected_card = game.get_structure().get_card(card_pos);
+        const CardStructure& structure = game.get_structure();
+        const Card* selected_card = structure.get_card(card_pos);
         if (!selected_card) {
             view->display_message("Invalid ID: Slot is empty.");
             continue;
@@ -59,10 +64,12 @@ void Controller::player_turn(Player& player) {
         int action;
         std::cin >> action;
 
+        std :: string selected_card_name = selected_card->name;
+
         switch (action) {
             case 1: // 建造
                 if (game.take_card(card_pos, player)) {
-                    view->display_message("Successfully built: " + selected_card->name);
+                    view->display_message("Successfully built: " + selected_card_name);
                     turn_finished = true;
                 } else {
                     view->display_message("Action Failed: Not enough resources or coins!");
@@ -86,6 +93,10 @@ void Controller::player_turn(Player& player) {
                 view->display_message("Invalid choice. Try again.");
                 break;
         }
+    // 等待5s时间玩家查看结果
+    view->display_message("Wait 5 seconds to view results...");
+    std::this_thread::sleep_for(std::chrono::seconds(5));  // Sleep for 3 seconds
+    clearScreen(); // 清屏以准备下一回合
     }
 }
 

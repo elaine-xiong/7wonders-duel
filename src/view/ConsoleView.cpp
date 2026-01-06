@@ -90,3 +90,11 @@ std::string ConsoleView::format_card_slot(int pos, const CardStructure& s) {
     std::string name = card->name.substr(0, 3);
     return is_acc ? "*" + name + "*" : "[" + name + "]";
 }
+
+void clearScreen() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
