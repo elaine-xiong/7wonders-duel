@@ -58,6 +58,26 @@ void ConsoleView::display_player_status(const Player& player) {
               << " S:" << player.get_resource(Resource::STONE) 
               << " G:" << player.get_resource(Resource::GLASS) 
               << " P:" << player.get_resource(Resource::PAPYRUS) << "\n";
+    
+    // 显示科技符号具体列表
+    std::cout << "Science (" << player.get_unique_science_count() << "/6 for win): ";
+    const auto& syms = player.get_science_symbols();
+    if (syms.empty()) std::cout << "None";
+    for (auto const& [res, count] : syms) {
+        std::string name;
+        switch(res) {
+            case Resource::ARMILLARY: name = "GLOBE"; break;
+            case Resource::SUNDIAL: name = "SUNDIAL"; break;
+            case Resource::WHEEL: name = "GEAR"; break;
+            case Resource::MORTAR: name = "MORTAR"; break;
+            case Resource::QUILL: name = "QUILL"; break;
+            case Resource::ARCH: name = "TABLET"; break;
+            case Resource::LAW: name = "LAW"; break;
+            default: name = "???"; break;
+        }
+        std::cout << "[" << name << "] ";
+    }
+    std::cout << "\nWonders: " << player.get_built_wonders_count() << "\n";
 }
 
 void ConsoleView::display_board(const Game& game) {

@@ -3,6 +3,7 @@
 
 #include <map>
 #include <vector>
+#include "../Types.h"
 
 // 前向声明，减少物理依赖并防止循环引用
 class Player;
@@ -22,10 +23,11 @@ public:
         bool can_build;                 // 最终判定：玩家当前是否能买得起/建得起
         bool is_free_by_chain;          // 是否通过白色连锁符号（LinkSymbol）免费建造
         int total_coin_cost;            // 总金币支出（卡牌标价 + 资源购买费）
-        
+        int trade_coin_cost;            // 仅资源购买费（用于 ECONOMY 标记）
+
         // 构造函数初始化默认值
         BuildCostResult() 
-            : can_build(true), is_free_by_chain(false), total_coin_cost(0) {}
+            : can_build(true), is_free_by_chain(false), total_coin_cost(0), trade_coin_cost(0) {}
     };
 
     /**
@@ -49,14 +51,22 @@ public:
      * 执行建造逻辑：计算成本，并从 Player 账户中扣除相应金币
      * @return 扣款是否成功（如果期间余额不足会返回 false）
      */
-    static bool execute_build(Player& player, const Player& opponent, const Card& card);
+    static bool execute_build(Player& player, Player& opponent, const Card& card);
+
+    /**
+     * 执行奇迹建造逻辑：由于奇迹没有连锁符号且是特定的资源需求列表，
+     * 所以需要一个直接接受资源 map 的接口。
+     */
+    static bool execute_wonder_build(Player& player, Player& opponent, const std::map<Resource, int>& wonder_cost);
 
 private:
-    /**
-     * 辅助函数：判断某种资源是否属于可以通过金币向银行购买的范畴
-     * (WOOD, CLAY, STONE, GLASS, PAPYRUS 为 true，其余为 false)
-     */
     static bool is_tradable_resource(Resource resource);
+
+    // 新增：计算具体某种资源 map + 连锁符号组合的成本
+    static BuildCostResult calculate_specific_cost(const Player& player, const Player& opponent, 
+                                                 const std::map<Resource, int>& cost_map, 
+                                                 LinkSymbol link,
+                                                 int resource_discount = 0);
 };
 
 #endif // COSTCALCULATOR_H

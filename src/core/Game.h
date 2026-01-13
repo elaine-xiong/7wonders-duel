@@ -28,6 +28,7 @@ private:
 
     std::vector<std::unique_ptr<Card>> discard_pile; 
     std::vector<ProgressToken> progress_token_pool;   
+    int total_wonders_built = 0; // 新增：记录全场已建成的奇迹总数
 
     // 内部私有辅助
     void setup_age_structure(int age);
@@ -60,6 +61,7 @@ public:
     Player* get_opponent(); 
     // 获取指定玩家的对手 (解决 ctrller.cpp 报错)
     Player* get_opponent(Player& p); 
+    Player* get_player(int index);
 
     CardStructure& get_structure() { return *cardStructure; } 
     int get_current_age() const { return current_age; }

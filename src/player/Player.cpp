@@ -1,4 +1,6 @@
 #include "Player.h"
+#include "cards/Card.h"
+#include "core/Game.h"
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
@@ -26,17 +28,21 @@ bool Player::spend_coins(int amount) {
 
 // --- 资源产出与交易逻辑 ---
 
-void Player::add_resource(Resource res, int amount) {
-    if (amount > 0) resources[res] += amount;
+void Player::add_resource(Resource res, int amount, bool is_raw) {
+    if (amount > 0) {
+        resources[res] += amount;
+        if (is_raw) raw_resources[res] += amount;
+    }
 }
 
 int Player::get_resource(Resource res) const {
-    // 严禁使用 resources[res]，因为它会在 key 不存在时插入新条目
     auto it = resources.find(res);
-    if (it != resources.end()) {
-        return it->second;
-    }
-    return 0;
+    return (it != resources.end()) ? it->second : 0;
+}
+
+int Player::get_raw_resource(Resource res) const {
+    auto it = raw_resources.find(res);
+    return (it != raw_resources.end()) ? it->second : 0;
 }
 
 void Player::add_resource_choice(const std::set<Resource>& options) {
@@ -60,13 +66,16 @@ int Player::get_trade_cost(Resource res) const {
 
 // --- 卡牌管理与统计 ---
 
-void Player::add_built_card(const std::string& cardName, Color cardColor) {
-    built_card_names.push_back(cardName);
-    cards_by_color[cardColor]++;
+void Player::add_built_card(std::unique_ptr<Card> card) {
+    cards_by_color[card->color]++;
+    built_cards.push_back(std::move(card));
 }
 
 bool Player::has_card(const std::string& cardName) const {
-    return std::find(built_card_names.begin(), built_card_names.end(), cardName) != built_card_names.end();
+    for (const auto& card : built_cards) {
+        if (card->name == cardName) return true;
+    }
+    return false;
 }
 
 int Player::get_card_count_by_color(Color color) const {
@@ -123,15 +132,21 @@ void Player::increment_wonder_count() {
 
 // --- 科技、军事与特殊效果 ---
 
-void Player::add_science_symbol(Resource symbol) {
-    // 判定是否属于科技符号区间 (COMPASS 到 LAW)
-    if (symbol >= Resource::COMPASS && symbol <= Resource::LAW) {
-        science_symbols.insert(symbol);
+bool Player::add_science_symbol(Resource symbol) {
+    // 判定是否属于科技符号区间 (ARMILLARY 到 LAW)
+    if (symbol >= Resource::ARMILLARY && symbol <= Resource::LAW) {
+        science_symbols[symbol]++;
+        // 如果某种符号达到 2 个，表示形成了一对，触发 Progress Token 选择
+        if (science_symbols[symbol] == 2) {
+            return true;
+        }
     }
+    return false;
 }
 
 int Player::get_unique_science_count() const {
     // 返回 set 的大小即为不同科技符号的数量 (规则书 P12)
+    // 注意：LAW 标记在获得时已通过 add_science_symbol 加入了 map，所以 size() 已包含它
     return static_cast<int>(science_symbols.size());
 }
 
@@ -146,10 +161,74 @@ void Player::destroy_card_by_color(Color color) {
 
 // --- 最终结算 ---
 
-int Player::calculate_final_score() const {
-    // 1. 基础胜利点数 (来自蓝卡、绿卡、黄卡、红卡、奇迹的直接加分)
+int Player::calculate_final_score(const Player& opponent) const {
+    // 1. 基础胜利点数 (来自蓝卡、红卡、绿卡[已有VP]、奇迹[已有VP]、科技标记[已有VP]的直接加分)
     int total = victory_points;
+
     // 2. 现金换分：每 3 元换 1 分 (规则书 P13)
     total += (coins / 3);
+
+    // 3. 科技标记加分：MATHEMATICS (数学) 每个标记 3 分
+    if (has_progress_token(ProgressToken::MATHEMATICS)) {
+        total += (static_cast<int>(owned_tokens.size()) * 3);
+    }
+
+    // 4. 公会卡计分 (紫色卡)
+    for (const auto& card : built_cards) {
+        if (card->color == Color::PURPLE) {
+            const auto& sr = card->special_reward;
+            if (!sr.active) continue;
+
+            int my_count = 0;
+            int opp_count = 0;
+
+            if (sr.count_wonders) {
+                my_count = this->built_wonders_count;
+                opp_count = opponent.get_built_wonders_count();
+            } else if (card->name == "Moneylenders Guild") {
+                my_count = this->coins / 3;
+                opp_count = opponent.get_coins() / 3;
+            } else {
+                // 通用逻辑：按颜色统计
+                my_count = this->get_card_count_by_color(sr.target_color);
+                opp_count = opponent.get_card_count_by_color(sr.target_color);
+                
+                // 处理双色情况 (船主公会: 棕+灰)
+                if (sr.secondary_target_color != Color::NONE) {
+                    my_count += this->get_card_count_by_color(sr.secondary_target_color);
+                    opp_count += opponent.get_card_count_by_color(sr.secondary_target_color);
+                }
+            }
+
+            // 公会卡计分规则：取双方中数量较多的一方
+            total += std::max(my_count, opp_count) * sr.vp_per_card;
+        }
+    }
+
     return total;
+}
+
+void Player::add_progress_token(ProgressToken token) {
+    owned_tokens.insert(token);
+    // 立即执行即时性效果
+    if (token == ProgressToken::PHILOSOPHY) {
+        add_victory_points(7);
+    }
+    // AGRICULTURE (农业): 立即获得 6 元，并提供 4 VP (结尾算)
+    if (token == ProgressToken::AGRICULTURE) {
+        add_coins(6);
+        add_victory_points(4);
+    }
+    // LAW (法律): 获得一个额外的科学符号 (天平)
+    if (token == ProgressToken::LAW) {
+        add_science_symbol(Resource::LAW);
+    }
+}
+
+bool Player::has_progress_token(ProgressToken token) const {
+    return owned_tokens.count(token) > 0;
+}
+
+int Player::get_military_tokens() const {
+    return military_tokens;
 }

@@ -24,3 +24,7 @@ add_executable(7WondersDuel ${SOURCES} ${HEADERS})
 if(WIN32)
     add_definitions(-D_WIN32_WINNT=0x0600)
 endif()
+
+if(MSVC)
+    add_compile_options(/utf-8)
+endif()

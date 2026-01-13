@@ -1,11 +1,13 @@
 #pragma once
 #include <string>
 #include <memory>
+#include <vector>
 
 // 前向声明，避免循环包含
 class Game;
 class Player;
 class ConsoleView;
+class Wonder;
 
 /**
  * Controller 类：作为游戏的中枢神经
@@ -31,6 +33,13 @@ public:
      * 内部逻辑：显示界面 -> 循环等待输入 -> 执行动作 -> 验证成功 -> 退出
      */
     void player_turn(Player& player);
+
+    /**
+     * 初始奇迹挑选阶段 (Draft Phase)
+     * @param round 挑选轮次 (1 或 2)
+     * @param pool 全部的奇迹池 (12个)，函数内部会根据轮次从中截取
+     */
+    void draft_wonders(int round, std::vector<Wonder>& pool);
 
     /**
      * UI 反馈：由 Game 逻辑层直接调用
